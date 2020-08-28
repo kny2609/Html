@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order_seat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/order.css">
+    <style> 
+        body {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #666;
+            letter-spacing: -1px;
+        } 
+        main {
+            display: block;
+            overflow: visible;
+            position: relative;
+            width: 952px;
+            min-height: 655px;
+            padding: 0 0 53px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+        /* 가격 선택 상단 */
+        .location_step .list_step {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+            background: #f9f9f9;
+        }
+        .location_step .list_step .btn_menu {
+            display: block;
+            overflow: hidden;
+            height: 50px;
+            font-size-adjust: 16px;
+            font-weight: bold;
+            line-height: 50px;
+        }
+        .location_step .list_step .btn_menu01 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 240px;
+            padding-left: 80px;
+        }
+        .location_step .list_step .btn_menu02 {
+            position: absolute;
+            top: 0;
+            left: 240px;
+            width: 240px;
+            padding-left: 80px;
+        }
+        .location_step .list_step .btn_menu03 {
+            position: absolute;
+            top: 0;
+            left: 480px;
+            width: 202px;
+            padding-left: 80px;
+        }
+        /* 티켓 가격 선택 */
+        .box_r {
+            overflow-y: auto;
+            width: 636px;
+            height: 574px;
+            padding: 29px 16px 0 30px;
+        }
+        .box_select_t {position: relative;}
+        .select_tit {
+            padding-bottom: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+        .box_select .box_ticket {width: 620px;}
+        .box_select .box_ticket h4 {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            height: 40px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background-color: #fafafa;
+        }
+        .box_select .box_ticket h4 .tit_ticket {
+            display: block;
+            font-size: 14px;
+            line-height: 38px;
+            margin: 0 8px;
+            color: #333;
+        }
+        .box_select .box_ticket h4 .txt {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 38px;
+            letter-spacing: 0;
+            color: #333;
+        }
+        .box_select .box_ticket h4 .txt span {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 38px;
+            letter-spacing: 0;
+            color: #333;
+        }
+        .box_select .box_ticket h4 .txt em {
+            font-size: 14px;
+            font-weight: bold;
+            color: #00b523;
+        }
+        .box_select .list_ticket {
+            display: block;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            line-height: 38px;
+        }
+        .box_select .list_ticket .box_ticket_t {
+            display: block;
+            overflow: hidden;
+            margin: 0 8px;
+        }
+        .box_select .list_ticket .box_ticket_t .tit_tk {
+            display: inline-block;
+            width: 270px;
+            color: #333;
+            height: 38px;
+            font-size: 13px;
+            line-height: 38px;
+            vertical-align: top;
+            margin-top: 3px;
+        }
+        .box_select .list_ticket .box_ticket_t .tit_tk.base_pr {
+            font-weight: bold;
+            width: 373px;
+            margin-top: 0;
+        }
+        /* 기본가의 가격부터 */
+
+        /* 할인수단 선택 */
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="header_wrap">
+                <div id="gnb">
+                    <div id="util_menu">
+                        <div class="top_left">
+                            <ul>
+                                <li><a href="#">멜론</a></li>
+                            </ul>
+                        </div>
+                        <div class="top_right">
+                            <ul>
+                                <li id="name_area"></li>
+                                <li><a href="#">로그인</a></li>
+                                <li><a href="#">회원가입</a></li>
+                                <li><a href="#">고객센터</a></li>
+                                <li><a href="#">이용안내</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h1 id="logo"><a href="#"><img src="../img/logo.PNG" alt="melon 티켓"></a></h1>
+                    <form action="#">
+                        <input type="text" name="search"/>
+                        <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <div id="gnb_menu">
+                    <ul>
+                        <li><a href="#">홈</a></li>
+                        <li><a href="#">콘서트</a></li>
+                        <li><a href="#">뮤지컬/연극</a></li>
+                        <li><a href="#">클래식</a></li>
+                        <li><a href="#">전시/행사</a></li>
+                        <li><a href="#">테마/지역</a></li>
+                        <li><a href="#">랭킹</a></li>
+                        <li><a href="#">티켓오픈소식</a></li>
+                        <li><a href="#">이벤트</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">For U</a></li>
+                        <li><a href="#">마이티켓</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        
+        <main>
+            <!-- 가격 선택 -->
+            <div class="select">
+                <!-- 가격 선택 상단 -->
+                <div class="location_step">
+                    <ul class="list_step">
+                        <li class="step">
+                            <a href="#" class="btn_menu btn_menu01">좌석선택</a>
+                        </li>
+                        <li class="step">
+                            <a href="#" class="btn_menu btn_menu02 on">가격선택</a>
+                        </li>
+                        <li class="step">
+                            <a href="#" class="btn_menu btn_menu03">배송/결제</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box_select box_r">
+                    <!-- 티켓가격 선택 -->
+                    <div class="box_select_t">
+                        <h3 class="select_tit">티켓가격을 선택하세요</h3>
+                        <div class="box_cont box_ticket">
+                            <h4>
+                                <strong class="tit_ticket">전석</strong>
+                                <span class="txt">
+                                    <span class="txt_seat_grade_tot">
+                                        <span>1</span>매중
+                                    </span>
+                                    <em>1</em>매 선택
+                                </span>
+                            </h4>
+                            <div class="list_ticket">
+                                <div class="box_ticket_t on">
+                                    <div>
+                                        <dl>
+                                            <dt class="tit_tk base_pr">기본가</dt>
+                                            <dd class="price price_sale_r txt_bd">77,000원</dd>
+                                            <dd class="price sel">
+                                                <select class="sel_cate">
+                                                    <option value="0">0매</option>
+                                                    <option value="1">1매</option>
+                                                </select>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 할인수단 선택 -->
+                    <div class="box_select_t box_top">
+                        <h3 class="select_tit">할인수단을 선택하세요</h3>
+                        <div class="box_cont box_coupon">
+                            <div class="list_coupon">
+                                <div class="list_coupon_t frt">
+                                    <div class="ticket_btn_cp">
+                                        <div class="box_coupon_t">
+                                            <span class="tit_cp">
+                                                쿠폰
+                                                <span class="txt_gr"><span>0</span>개</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list_coupon">
+                                <div class="list_coupon_t">
+                                    <div class="ticket_btn_cp">
+                                        <div class="box_coupon_t">
+                                            <span class="tit_cp">
+                                                공연예매권 
+                                                <span class="txt_gr"><span>0</span>개</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 티켓 정보 영역 -->
+            <div class="ticket_info">
+                <h2 class="logo"><img src="../img/order_seat_logo.PNG"></h2>
+                <div class="box_info">
+                    <h3 class="select_tit select_t txt_prod_name">프롬 단독 콘서트［FROMM Sunset Island］</h3>
+                    <div class="box_ticket">
+                        <ul class="box_ticket_list">
+                            <li class="nth nth1 txt_prod_schedule">2020.09.12(토) 19:00</li>
+                            <li class="nth nth2 txt_ticket_info">총 1석 선택<br>전석 1 층 M 열 9 번 </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box_info">
+                    <h3 class="select_tit">결제금액</h3>
+                    <div class="box_ticket">
+                        <div class="box_total_inner">
+                            <p class="tk_b">
+                                <span class="tk_tit">티켓금액</span>
+                                <span class="pay pay_comp"><span>77,000</span>원</span>
+                            </p>
+                            <ul class="list_tkpay">
+                                <li>
+                                    <span class="tk_tit">기본가</span>
+                                    <span class="pay"><span>77,000</span>원</span>
+                                </li>
+                                <li>
+                                    <span class="tk_tit">가격할인</span>
+                                    <span class="pay"><span>0</span>원</span>
+                                </li>
+                                <li>
+                                    <span class="tk_tit">쿠폰할인</span>
+                                    <span class="pay"><span>0</span>원</span>
+                                </li>
+                                <li>
+                                    <span class="tk_tit">공연예매권</span>
+                                    <span class="pay"><span>0</span>원</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="box_total_inner">
+                            <p class="tk_b">
+                                <span class="tk_tit tk_tit_b">예매수수료</span>
+                                <span class="pay pay_comp"><span>1,000</span>원</span>
+                            </p>
+                        </div>
+                        <div class="box_total_inner 1st">
+                            <p class="tk_b">
+                                <span class="tk_tit tk_tit_b">배송료</span>
+                                <span class="pay pay_comp"><span>0</span>원</span>
+                            </p>
+                        </div>
+                        <div class="box_total_inner box_result">
+                            <span class="tk_tit tot_tit">총 결제금액</span>
+                            <strong class="pay tot_pay"><span>78,000</span>원</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_info_bm">
+                    <div class="box_info_list">
+                        <ul class="one_list">
+                            <li>
+                                취소기한 : <span>2020년 9월 11일(금) 17:00 까지</span>
+                            </li>
+                            <li>
+                                취소수수료 : <span>티켓금액의 0~30%</span>
+                                <a href="#" class="btn_detail"><span>상세보기</span></a>
+                                <div class="floating_hover_box">
+                                    <strong>취소 수수료 안내</strong>
+                                    <div class="tabling">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">취소일</th>
+                                                    <th scope="col">취소수수료</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>2020.08.28 ~ 2020.09.02</td>
+                                                    <td>없음</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020.09.03 ~ 2020.09.05</td>
+                                                    <td>티켓금액의 10%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020.09.06 ~ 2020.09.09</td>
+                                                    <td>티켓금액의 20%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2020.09.10 ~ 2020.09.11</td>
+                                                    <td>티켓금액의 30%</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn_onestop">
+                        <span class="button btWhite frt">
+                            <a href="#" class="btnOne"><em><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;이전</em></a>
+                        </span>
+                        <span class="button btNext on">
+                            <a href="#" class="btnOne"><em>다음&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></em></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="footer_notice">
+            <strong>공지사항</strong>
+            <ul>
+                <li>
+                    <p>
+                        <a href="#">[시스템작업] KCT전산작업으로 인한 결제중단 안내</a>
+                        <span>2020.08.21</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <footer>
+            <div class="footer_quick_link">
+                <div class="box1"><a href="#">Melon</a></div>
+                <div class="box2">
+                    <a href="#">예매가이드</a>
+                    <a href="#">티켓판매제휴</a>
+                    <span>예매문의(1899-0042)</span>
+                </div>
+            </div>
+            <div class="inner_footer">
+                <ul>
+                    <li><a href="#" title="회사소개">회사소개</a></li>
+                    <li><a href="#" title="이용약관">이용약관</a></li>
+                    <li><a href="#" title="멜론티켓이용약관">멜론티켓이용약관</a></li>
+                    <li><a href="#" title="전자금융거래약관">전자금융거래약관</a></li>
+                    <li><a href="#" title="위치기반서비스 이용약관">위치기반서비스 이용약관</a></li>
+                    <li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+                    <li><a href="#" title="청소년보호정책">청소년보호정책</a></li>
+                    <li><a href="#" title="파트너센터">파트너센터</a></li>
+                </ul>
+                <p>
+                    <strong>(주)카카오</strong> <span>제주특별자치도 제주시 첨단로 242(영평동)</span> <span>공동대표이사 : 여민수, 조수용</span> <span>사업자등록번호 : 120-81-47521</span> <br>
+                    <span>통신판매업 신고번호 : 제2015-제주아라-0032호</span> <a href="#">사업자정보확인 ></a> <span>고객센터(평일/주말 09:00~18:00) : 1899-0042 (유료)</span> <br>
+                    <span>호스팅제공자 : (주) 카카오</span> <span>© Kakao Corp. All rights reserved.</span>
+                </p>
+                <div class="safe_service">
+                    <dl>
+                        <dt>신한은행 구매안전 서비스</dt>
+                        <dd>
+                            고객님은 안전거래를 위해 현금으로 결제시<br>
+                            멜론티켓에서 가입한 신한은행으로<br>
+                            구매안전서비스를 이용하실 수 있습니다.
+                        </dd>
+                        <dd><a href="#">서비스 가입사실 확인></a></dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="ban">
+                <img src="../img/footer_banner.PNG">
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>
