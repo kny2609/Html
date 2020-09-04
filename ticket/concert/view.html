@@ -24,8 +24,6 @@
             width: auto;
             height: auto;
             margin: 0 auto;
-            border: 1px solid red;
-            box-sizing: border-box;
         }
         .section_detailview_product {
             position: relative;
@@ -481,8 +479,10 @@
             color: #888;
         }
         /* 출연진 */
+        .detailview_cont {overflow: hidden;}
         .detailview_cont .detail_left_cont {
             float: left;
+            overflow: hidden;
             width: 702px;
         }
         .detailview_cont .detail_left_cont .box_artist_checking {
@@ -682,6 +682,7 @@
         /* 관련음악 */
         .detailview_cont .detail_right_cont {
             float: left;
+            overflow: hidden;
             width: 280px;
             margin-left: 26px;
         }

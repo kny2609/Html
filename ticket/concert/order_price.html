@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Order_seat</title>
+    <title>Order_price</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
@@ -12,147 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/order.css">
-    <style> 
-        body {
-            font-size: 12px;
-            line-height: 1.5;
-            color: #666;
-            letter-spacing: -1px;
-        } 
-        main {
-            display: block;
-            overflow: visible;
-            position: relative;
-            width: 952px;
-            min-height: 655px;
-            padding: 0 0 53px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            border: 1px solid red;
-            box-sizing: border-box;
-        }
-        /* 가격 선택 상단 */
-        .location_step .list_step {
-            display: block;
-            overflow: hidden;
-            position: relative;
-            height: 50px;
-            background: #f9f9f9;
-        }
-        .location_step .list_step .btn_menu {
-            display: block;
-            overflow: hidden;
-            height: 50px;
-            font-size-adjust: 16px;
-            font-weight: bold;
-            line-height: 50px;
-        }
-        .location_step .list_step .btn_menu01 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 240px;
-            padding-left: 80px;
-        }
-        .location_step .list_step .btn_menu02 {
-            position: absolute;
-            top: 0;
-            left: 240px;
-            width: 240px;
-            padding-left: 80px;
-        }
-        .location_step .list_step .btn_menu03 {
-            position: absolute;
-            top: 0;
-            left: 480px;
-            width: 202px;
-            padding-left: 80px;
-        }
-        /* 티켓 가격 선택 */
-        .box_r {
-            overflow-y: auto;
-            width: 636px;
-            height: 574px;
-            padding: 29px 16px 0 30px;
-        }
-        .box_select_t {position: relative;}
-        .select_tit {
-            padding-bottom: 6px;
-            font-weight: bold;
-            font-size: 16px;
-            color: #333;
-        }
-        .box_select .box_ticket {width: 620px;}
-        .box_select .box_ticket h4 {
-            display: block;
-            overflow: hidden;
-            position: relative;
-            height: 40px;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            background-color: #fafafa;
-        }
-        .box_select .box_ticket h4 .tit_ticket {
-            display: block;
-            font-size: 14px;
-            line-height: 38px;
-            margin: 0 8px;
-            color: #333;
-        }
-        .box_select .box_ticket h4 .txt {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 20px;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 38px;
-            letter-spacing: 0;
-            color: #333;
-        }
-        .box_select .box_ticket h4 .txt span {
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 38px;
-            letter-spacing: 0;
-            color: #333;
-        }
-        .box_select .box_ticket h4 .txt em {
-            font-size: 14px;
-            font-weight: bold;
-            color: #00b523;
-        }
-        .box_select .list_ticket {
-            display: block;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-            font-size: 13px;
-            line-height: 38px;
-        }
-        .box_select .list_ticket .box_ticket_t {
-            display: block;
-            overflow: hidden;
-            margin: 0 8px;
-        }
-        .box_select .list_ticket .box_ticket_t .tit_tk {
-            display: inline-block;
-            width: 270px;
-            color: #333;
-            height: 38px;
-            font-size: 13px;
-            line-height: 38px;
-            vertical-align: top;
-            margin-top: 3px;
-        }
-        .box_select .list_ticket .box_ticket_t .tit_tk.base_pr {
-            font-weight: bold;
-            width: 373px;
-            margin-top: 0;
-        }
-        /* 기본가의 가격부터 */
-
-        /* 할인수단 선택 */
-    </style>
 </head>
 <body>
     <div id="wrapper">
@@ -345,10 +204,10 @@
                     <div class="box_info_list">
                         <ul class="one_list">
                             <li>
-                                취소기한 : <span>2020년 9월 11일(금) 17:00 까지</span>
+                                취소기한 : <span class="txt_og">2020년 9월 11일(금) 17:00 까지</span>
                             </li>
                             <li>
-                                취소수수료 : <span>티켓금액의 0~30%</span>
+                                취소수수료 : <span class="txt_og">티켓금액의 0~30%</span>
                                 <a href="#" class="btn_detail"><span>상세보기</span></a>
                                 <div class="floating_hover_box">
                                     <strong>취소 수수료 안내</strong>
